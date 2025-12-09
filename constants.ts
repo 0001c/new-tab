@@ -38,4 +38,5 @@ export const DEFAULT_SETTINGS = {
   interactionStyle: InteractionStyle.FLUID,
   blurStrength: 'high' as const,
   engineId: 'google',
+  defaultAIModel: 'QWEN' as const,
 };

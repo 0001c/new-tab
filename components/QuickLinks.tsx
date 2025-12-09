@@ -50,6 +50,21 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
   const containerClass = style === InteractionStyle.TECH ? 'bg-black/80 border border-cyan-900/50' : style === InteractionStyle.MINIMAL ? 'bg-white/80 shadow-sm border border-gray-200' : 'bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20';
   const textClass = style === InteractionStyle.MINIMAL ? 'text-gray-800' : 'text-white';
   const iconClass = style === InteractionStyle.MINIMAL ? 'text-gray-600' : 'text-gray-200';
+  
+  // Apply theme color to specific elements
+  const getAddButtonStyle = () => {
+    if (style === InteractionStyle.TECH) {
+      return { borderColor: themeColor };
+    }
+    return {};
+  };
+  
+  const getAddModalStyle = () => {
+    if (style === InteractionStyle.TECH) {
+      return { borderColor: themeColor };
+    }
+    return {};
+  };
 
   return (
     <div className="w-full max-w-4xl mx-auto mt-12 px-4">
@@ -89,7 +104,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
           onClick={() => setIsAdding(true)}
           className={`flex flex-col items-center justify-center p-4 gap-3 transition-all opacity-60 hover:opacity-100 hover:scale-105 ${containerClass} ${buttonClass}`}
         >
-          <div className={`w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-dashed ${style === InteractionStyle.MINIMAL ? 'border-gray-400' : 'border-white/30'}`}>
+          <div className={`w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-dashed ${style === InteractionStyle.MINIMAL ? 'border-gray-400' : 'border-white/30'}`} style={getAddButtonStyle()}>
             <Plus className={iconClass} />
           </div>
           <span className={`text-xs font-medium ${textClass}`}>Add Shortcut</span>
@@ -101,6 +116,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in" onClick={() => setIsAdding(false)}>
           <div 
             className={`w-full max-w-sm p-6 space-y-4 animate-slide-up ${style === InteractionStyle.MINIMAL ? 'bg-white' : 'bg-gray-900 border border-white/10'} ${buttonClass}`}
+            style={getAddModalStyle()}
             onClick={e => e.stopPropagation()}
           >
             <h3 className={`text-lg font-semibold ${textClass}`}>Add Shortcut</h3>

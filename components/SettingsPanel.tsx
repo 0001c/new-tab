@@ -4,28 +4,25 @@ import { AppSettings, InteractionStyle } from '../types';
 import { WALLPAPERS, THEME_COLORS } from '../constants';
 
 interface SettingsPanelProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose: () => void;
   settings: AppSettings;
-  updateSettings: (newSettings: Partial<AppSettings>) => void;
+  onSettingsChange: (newSettings: Partial<AppSettings>) => void;
 }
 
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
-  isOpen,
   onClose,
   settings,
-  updateSettings,
+  onSettingsChange,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  if (!isOpen) return null;
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        updateSettings({
+        onSettingsChange({
           wallpaper: reader.result as string,
           wallpaperType: 'upload'
         });
@@ -51,8 +48,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const sectionTitle = `text-sm font-bold uppercase tracking-wider mb-3 ${subTextColor}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-      <div className={`relative w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col animate-slide-up ${getStyleClasses()}`}>
+      <div className={`relative w-full max-h-[85vh] overflow-hidden flex flex-col animate-slide-up ${getStyleClasses()} h-full`}>
         
         {/* Header */}
         <div className={`flex items-center justify-between p-6 border-b ${settings.interactionStyle === InteractionStyle.MINIMAL ? 'border-gray-100' : 'border-white/10'}`}>
@@ -81,7 +77,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               ].map((style) => (
                 <button
                   key={style.id}
-                  onClick={() => updateSettings({ interactionStyle: style.id })}
+                  onClick={() => onSettingsChange({ interactionStyle: style.id })}
                   className={`relative p-4 text-left transition-all border ${
                     settings.interactionStyle === style.id
                       ? `border-[${settings.themeColor}] bg-[${settings.themeColor}]/10 ring-2 ring-[${settings.themeColor}]`
@@ -107,7 +103,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               {THEME_COLORS.map((color) => (
                 <button
                   key={color}
-                  onClick={() => updateSettings({ themeColor: color })}
+                  onClick={() => onSettingsChange({ themeColor: color })}
                   className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 ${
                     settings.themeColor === color ? 'ring-2 ring-offset-2 ring-offset-transparent ring-white' : ''
                   }`}
@@ -141,7 +137,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               {WALLPAPERS.map((wp, idx) => (
                 <button
                   key={idx}
-                  onClick={() => updateSettings({ wallpaper: wp, wallpaperType: 'url' })}
+                  onClick={() => onSettingsChange({ wallpaper: wp, wallpaperType: 'url' })}
                   className={`relative aspect-video rounded-lg overflow-hidden group border-2 transition-all ${
                     settings.wallpaper === wp ? `border-[${settings.themeColor}]` : 'border-transparent'
                   }`}
@@ -160,7 +156,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
         </div>
       </div>
-    </div>
   );
 };
 

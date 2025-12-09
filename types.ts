@@ -30,8 +30,3 @@ export interface AppSettings {
   blurStrength: 'none' | 'low' | 'high';
   engineId: string;
 }
-
-export interface ChatMessage {
-  role: 'user' | 'model';
-  text: string;
-}

@@ -1,28 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, Sparkles, Command, ArrowRight, Loader2, Globe, X } from 'lucide-react';
-import { SearchMode, SearchEngine, InteractionStyle } from '../types';
+import { Search, Command, ArrowRight, X } from 'lucide-react';
+import { SearchEngine, InteractionStyle } from '../types';
 import { SEARCH_ENGINES } from '../constants';
 
 interface SearchBarProps {
-  mode: SearchMode;
-  setMode: (mode: SearchMode) => void;
   style: InteractionStyle;
   themeColor: string;
   engineId: string;
   setEngineId: (id: string) => void;
-  onSearch: (query: string, mode: SearchMode) => void;
-  isAiLoading: boolean;
+  onSearch: (query: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
-  mode,
-  setMode,
   style,
   themeColor,
   engineId,
   setEngineId,
-  onSearch,
-  isAiLoading
+  onSearch
 }) => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -35,7 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   // Simulating suggestions (In a real app, you might fetch these from a proxy)
   useEffect(() => {
-    if (query.trim().length > 0 && isFocused && mode === SearchMode.WEB) {
+    if (query.trim().length > 0 && isFocused) {
       // Mock suggestions
       const mocks = [
         `${query} news`,
@@ -48,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
     } else {
       setSuggestions([]);
     }
-  }, [query, isFocused, mode]);
+  }, [query, isFocused]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,7 +58,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      onSearch(query, mode);
+      onSearch(query);
       setIsFocused(false);
     }
   };
@@ -72,7 +66,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   // Styles based on settings
   const getContainerStyle = () => {
     if (style === InteractionStyle.TECH) {
-      return `border-2 border-cyan-500/50 bg-black/90 shadow-[0_0_15px_rgba(6,182,212,0.2)] rounded-none font-mono`;
+      return `border-2 bg-black/90 shadow-[0_0_15px_rgba(6,182,212,0.2)] rounded-none font-mono`;
     }
     if (style === InteractionStyle.MINIMAL) {
       return `bg-white border border-gray-200 shadow-lg rounded-xl text-gray-800`;
@@ -83,7 +77,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   const getFocusStyle = () => {
     if (!isFocused) return '';
-    if (style === InteractionStyle.TECH) return 'shadow-[0_0_25px_cyan] border-cyan-400';
+    if (style === InteractionStyle.TECH) return `shadow-[0_0_25px_${themeColor}]`;
     if (style === InteractionStyle.MINIMAL) return 'ring-2 ring-gray-100 border-gray-300';
     return 'bg-white/20 border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.2)]';
   };
@@ -104,62 +98,26 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <>
       <div className="relative w-full max-w-2xl mx-auto z-40 transition-all duration-300">
-        
-        {/* Mode Switcher */}
-        <div className="absolute -top-12 left-0 right-0 flex justify-center gap-4 mb-4">
-          <button
-            onClick={() => setMode(SearchMode.WEB)}
-            className={`flex items-center gap-2 px-4 py-2 transition-all ${style === InteractionStyle.FLUID ? 'rounded-full' : 'rounded-none'} ${
-              mode === SearchMode.WEB 
-                ? `bg-white text-black font-semibold shadow-lg scale-105` 
-                : 'text-white/70 hover:text-white hover:bg-white/10'
-            }`}
-          >
-            <Globe size={16} />
-            <span>Web Search</span>
-          </button>
-          <button
-            onClick={() => setMode(SearchMode.AI)}
-            className={`flex items-center gap-2 px-4 py-2 transition-all ${style === InteractionStyle.FLUID ? 'rounded-full' : 'rounded-none'} ${
-              mode === SearchMode.AI 
-                ? `bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg shadow-purple-500/30 scale-105` 
-                : 'text-white/70 hover:text-white hover:bg-white/10'
-            }`}
-          >
-            <Sparkles size={16} />
-            <span>Ask AI</span>
-          </button>
-        </div>
-
         {/* Main Input Bar */}
         <form 
           onSubmit={handleSubmit}
           className={`relative flex items-center h-16 px-4 transition-all duration-300 ${getContainerStyle()} ${getFocusStyle()}`}
         >
-          {/* Engine Selector (Web Mode Only) */}
-          {mode === SearchMode.WEB && (
-            <div className="mr-2">
-              <button 
-                type="button" 
-                onClick={() => setIsEngineModalOpen(true)}
-                className={`p-2 rounded-lg opacity-80 hover:opacity-100 hover:bg-white/10 transition-all ${textColor}`}
-                title="Change Search Engine"
-              >
-                {/* Simplified Icons */}
-                {activeEngine.id === 'google' && <span className="font-bold text-lg">G</span>}
-                {activeEngine.id === 'bing' && <span className="font-bold text-lg">b</span>}
-                {activeEngine.id === 'duckduckgo' && <span className="font-bold text-lg">D</span>}
-                {activeEngine.id === 'youtube' && <span className="font-bold text-lg">Y</span>}
-              </button>
-            </div>
-          )}
-
-          {/* AI Icon */}
-          {mode === SearchMode.AI && (
-            <div className="mr-3 animate-pulse-slow">
-              <Sparkles className="text-pink-400" />
-            </div>
-          )}
+          {/* Engine Selector */}
+          <div className="mr-2">
+            <button 
+              type="button" 
+              onClick={() => setIsEngineModalOpen(true)}
+              className={`p-2 rounded-lg opacity-80 hover:opacity-100 hover:bg-white/10 transition-all ${textColor}`}
+              title="Change Search Engine"
+            >
+              {/* Simplified Icons */}
+              {activeEngine.id === 'google' && <span className="font-bold text-lg">G</span>}
+              {activeEngine.id === 'bing' && <span className="font-bold text-lg">b</span>}
+              {activeEngine.id === 'duckduckgo' && <span className="font-bold text-lg">D</span>}
+              {activeEngine.id === 'youtube' && <span className="font-bold text-lg">Y</span>}
+            </button>
+          </div>
 
           <input
             ref={inputRef}
@@ -167,26 +125,22 @@ const SearchBar: React.FC<SearchBarProps> = ({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => setIsFocused(true)}
-            placeholder={mode === SearchMode.WEB ? `Search ${activeEngine.name} or type a URL` : "Ask anything..."}
+            placeholder={`Search ${activeEngine.name} or type a URL`}
             className={`flex-1 bg-transparent border-none outline-none h-full text-lg px-2 ${textColor} ${placeholderColor}`}
             autoFocus
           />
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            {isAiLoading ? (
-              <Loader2 className="animate-spin text-purple-400" />
-            ) : (
-              query && (
-                <button 
-                  type="submit"
-                  className={`p-2 rounded-full transition-colors ${
-                    style === InteractionStyle.MINIMAL ? 'bg-gray-100 hover:bg-gray-200 text-black' : 'hover:bg-white/10 text-white'
-                  }`}
-                >
-                  <ArrowRight size={20} />
-                </button>
-              )
+            {query && (
+              <button 
+                type="submit"
+                className={`p-2 rounded-full transition-colors ${
+                  style === InteractionStyle.MINIMAL ? 'bg-gray-100 hover:bg-gray-200 text-black' : 'hover:bg-white/10 text-white'
+                }`}
+              >
+                <ArrowRight size={20} />
+              </button>
             )}
             <div className={`hidden md:flex items-center gap-1 text-xs opacity-40 ml-2 border border-current rounded px-1.5 py-0.5 ${textColor}`}>
               <Command size={10} />
@@ -196,7 +150,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         </form>
 
         {/* Suggestions Dropdown */}
-        {isFocused && suggestions.length > 0 && mode === SearchMode.WEB && (
+        {isFocused && suggestions.length > 0 && (
           <div 
             ref={dropdownRef}
             className={`absolute top-full left-0 right-0 mt-2 overflow-hidden z-30 animate-slide-up origin-top ${
@@ -212,7 +166,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 key={idx}
                 onClick={() => {
                   setQuery(s);
-                  onSearch(s, mode);
+                  onSearch(s);
                 }}
                 className={`w-full text-left px-5 py-3 flex items-center gap-3 transition-colors ${
                   style === InteractionStyle.MINIMAL 

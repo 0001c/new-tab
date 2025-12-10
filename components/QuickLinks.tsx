@@ -212,16 +212,11 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
       return `bg-white border border-gray-200 shadow-lg rounded-xl text-gray-800`;
     }
     // Fluid
-    return `bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-full text-white`;
+    return `bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl text-white`;
   };
-  const getFocusStyle = () => {
-    if (!isFocused) return '';
-    if (style === InteractionStyle.TECH) return `shadow-[0_0_25px_${themeColor}]`;
-    if (style === InteractionStyle.MINIMAL) return 'ring-2 ring-gray-100 border-gray-300';
-    return 'bg-white/20 border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.2)]';
-  };
+
   const buttonClass = style === InteractionStyle.FLUID ? 'rounded-2xl' : style === InteractionStyle.MINIMAL ? 'rounded-lg' : 'rounded-none';
-  const containerClass = style === InteractionStyle.TECH ? 'bg-black/80 border border-cyan-900/50' : style === InteractionStyle.MINIMAL ? 'bg-white/80 shadow-sm border border-gray-200' : 'bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20';
+
   const textClass = style === InteractionStyle.MINIMAL ? 'text-gray-800' : 'text-white';
   const iconClass = style === InteractionStyle.MINIMAL ? 'text-gray-600' : 'text-gray-200';
   
@@ -250,7 +245,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
             className={`group relative flex flex-col items-center justify-center p-4 gap-3 transition-all duration-200 hover:scale-105 ${getContainerStyle()} ${buttonClass}`}
           >
             {/* Icon Container */}
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden ${getFocusStyle()}`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden `}>
               <img 
                 src={getFavicon(link.url)} 
                 alt={link.title} 
@@ -311,7 +306,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
               </div>
             )}
             
-            <div className={`p-6 border-b ${getFocusStyle()}`}>
+            <div className={`p-6 border-b `}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className={`text-xl font-semibold ${textClass}`}>Add Shortcut</h3>
                 <button
@@ -333,8 +328,8 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
                   placeholder="Search websites..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:border-transparent text-white placeholder-white/50 ${getContainerStyle()} ${getFocusStyle()}`}
-                  style={{ outline: 'none', boxShadow: `0 0 0 2px ${getFocusStyle()}` }}
+                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:border-transparent text-white placeholder-white/50 ${getContainerStyle()} `}
+                  style={{ outline: 'none', boxShadow: `0 0 0 2px ${getContainerStyle()}` }}
                 />
               </div>
               
@@ -344,7 +339,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
                   <button
                     key={category}
                     onClick={() => handleCategoryChange(category)}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedCategory === category ? `bg-[${themeColor}] text-white ${getContainerStyle()} ` : `${getFocusStyle()}`}`}
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedCategory === category ? `bg-[${themeColor}] text-white ${getContainerStyle()} ` : ``}`}
                     disabled={isAnimating}
                   >
                     {category}
@@ -440,7 +435,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
                   placeholder="Website title"
                   value={newLink.title}
                   onChange={(e) => setNewLink({ ...newLink, title: e.target.value })}
-                  className={`flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:border-transparent ${getContainerStyle()} ${getFocusStyle()}`}
+                  className={`flex-1 px-3 py-2 border rounded-lg focus:border-transparent ${getContainerStyle()} `}
                   style={{ outline: 'none', boxShadow: `0 0 0 2px ${getContainerStyle()}` }}
                 />
                 <input
@@ -448,13 +443,13 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
                   placeholder="Website URL (e.g. youtube.com)"
                   value={newLink.url}
                   onChange={(e) => setNewLink({ ...newLink, url: e.target.value })}
-                  className={`flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:border-transparent ${getContainerStyle()} ${getFocusStyle()}`}
+                  className={`flex-1 px-3 py-2 border rounded-lg focus:border-transparent ${getContainerStyle()} `}
                   style={{ outline: 'none', boxShadow: `0 0 0 2px ${getContainerStyle()}` }}
                 />
                 <button
                   onClick={handleAdd}
                   disabled={!newLink.url}
-                  className={`px-4 py-2 text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
+                  className={`px-4 py-2 text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${getContainerStyle()}`}
                   style={{ backgroundColor: themeColor }}
                 >
                   Add

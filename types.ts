@@ -22,6 +22,15 @@ export interface Shortcut {
   url: string;
 }
 
+export interface PresetShortcut {
+  id: string;
+  title: string;
+  url: string;
+  category: string;
+  description: string;
+  popularity: number;
+}
+
 export interface AppSettings {
   wallpaper: string; // URL
   wallpaperType: 'url' | 'upload';

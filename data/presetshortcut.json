@@ -1,0 +1,516 @@
+
+    
+[
+    {
+        "id": "youtube",
+        "title": "YouTube",
+        "url": "https://www.youtube.com",
+        "category": "ENTERTAINMENT",
+        "description": "全球最大的视频分享平台",
+        "popularity": 100
+    },
+    {
+        "id": "netflix",
+        "title": "Netflix",
+        "url": "https://www.netflix.com",
+        "category": "ENTERTAINMENT",
+        "description": "流媒体视频服务",
+        "popularity": 95
+    },
+    {
+        "id": "bilibili",
+        "title": "Bilibili",
+        "url": "https://www.bilibili.com",
+        "category": "ENTERTAINMENT",
+        "description": "中国领先的弹幕视频网站",
+        "popularity": 90    
+    },
+    {
+        "id": "twitch",
+        "title": "Twitch",
+        "url": "https://www.twitch.tv",
+        "category": "ENTERTAINMENT",
+        "description": "游戏直播平台",
+        "popularity": 85
+    },
+    {
+        "id": "spotify",
+        "title": "Spotify",
+        "url": "https://www.spotify.com",
+        "category": "ENTERTAINMENT",
+        "description": "音乐流媒体服务",
+        "popularity": 92
+    },
+    {
+        "id": "soundcloud",
+        "title": "SoundCloud",
+        "url": "https://soundcloud.com",
+        "category": "ENTERTAINMENT",
+        "description": "音频分享平台",
+        "popularity": 75
+    },
+    {
+        "id": "tiktok",
+        "title": "TikTok",
+        "url": "https://www.tiktok.com",
+        "category": "ENTERTAINMENT",
+        "description": "短视频社交平台",
+        "popularity": 93
+    },
+    {
+        "id": "instagram",
+        "title": "Instagram",   
+        "url": "https://www.instagram.com",
+        "category": "ENTERTAINMENT",
+        "description": "图片和短视频分享",
+        "popularity": 94
+    },
+    {
+        "id": "reddit",
+        "title": "Reddit",
+        "url": "https://www.reddit.com",
+        "category": "NEWS",
+        "description": "社交新闻聚合网站",
+        "popularity": 88
+    },
+    {
+        "id": "hackernews",
+        "title": "Hacker News",
+        "url": "https://news.ycombinator.com",
+        "category": "NEWS",
+        "description": "技术新闻和讨论",
+        "popularity": 80
+    },
+    {
+        "id": "medium",
+        "title": "Medium",
+        "url": "https://medium.com",
+        "category": "NEWS",
+        "description": "高质量文章发布平台",
+        "popularity": 85
+    },
+    {
+        "id": "zhihu",
+        "title": "知乎",
+        "url": "https://www.zhihu.com",
+        "category": "NEWS",
+        "description": "中文问答社区",
+        "popularity": 87
+    },
+    {
+        "id": "weibo",
+        "title": "微博",
+        "url": "https://weibo.com", 
+        "category": "NEWS",
+        "description": "中国社交媒体平台",
+        "popularity": 91
+    },
+    {
+        "id": "news",
+        "title": "Google News",
+        "url": "https://news.google.com",
+        "category": "NEWS",
+        "description": "新闻聚合服务",
+        "popularity": 82
+    },
+    {
+        "id": "bbc",
+        "title": "BBC News",    
+        "url": "https://www.bbc.com/news",
+        "category": "NEWS",
+        "description": "国际新闻网站",
+        "popularity": 79
+    },
+    {
+        "id": "cnn",
+        "title": "CNN",
+        "url": "https://www.cnn.com",
+        "category": "NEWS",
+        "description": "美国新闻网络",
+        "popularity": 76
+    },
+    {
+        "id": "facebook",       
+        "title": "Facebook",
+        "url": "https://www.facebook.com",
+        "category": "SOCIAL",
+        "description": "全球最大的社交网络",
+        "popularity": 95
+    },
+    {
+        "id": "twitter",
+        "title": "Twitter",
+        "url": "https://twitter.com",
+        "category": "SOCIAL",
+        "description": "微博客社交网络",
+        "popularity": 90
+    },
+    {
+        "id": "linkedin",
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com",
+        "category": "SOCIAL",
+        "description": "职业社交网络",
+        "popularity": 85
+    },
+    {
+        "id": "discord",
+        "title": "Discord",
+        "url": "https://discord.com",
+        "category": "SOCIAL",
+        "description": "语音、视频和文字聊天",
+        "popularity": 88
+    },
+    {
+        "id": "telegram",
+        "title": "Telegram",
+        "url": "https://telegram.org",
+        "category": "SOCIAL",
+        "description": "即时通讯应用",
+        "popularity": 83
+    },
+    {
+        "id": "whatsapp",
+        "title": "WhatsApp",
+        "url": "https://web.whatsapp.com",
+        "category": "SOCIAL",
+        "description": "即时通讯应用",
+        "popularity": 92
+    },
+    {
+        "id": "wechat",
+        "title": "微信网页版",
+        "url": "https://web.wechat.com",
+        "category": "SOCIAL",
+        "description": "中国即时通讯应用",
+        "popularity": 89
+    },
+    {
+        "id": "qq",
+        "title": "QQ",
+        "url": "https://mail.qq.com",
+        "category": "SOCIAL",
+        "description": "中国即时通讯应用",
+        "popularity": 84
+    },
+    {
+        "id": "github",
+        "title": "GitHub",
+        "url": "https://github.com",
+        "category": "WORK",
+        "description": "代码托管平台",
+        "popularity": 95
+    },
+    {
+        "id": "notion",
+        "title": "Notion",
+        "url": "https://www.notion.so",
+        "category": "WORK",
+        "description": "笔记和协作工具",
+        "popularity": 88
+    },
+    {
+        "id": "slack",
+        "title": "Slack",
+        "url": "https://slack.com",
+        "category": "WORK",
+        "description": "团队协作工具",
+        "popularity": 85
+    },
+    {
+        "id": "trello",
+        "title": "Trello",
+        "url": "https://trello.com",
+        "category": "WORK",
+        "description": "项目管理工具",
+        "popularity": 80
+    },
+    {
+        "id": "figma",
+        "title": "Figma",
+        "url": "https://www.figma.com",
+        "category": "WORK",
+        "description": "协作设计工具",
+        "popularity": 87
+    },
+    {
+        "id": "stackoverflow",
+        "title": "Stack Overflow",
+        "url": "https://stackoverflow.com",
+        "category": "WORK",
+        "description": "程序员问答社区",
+        "popularity": 92
+    },
+    {
+        "id": "office",
+        "title": "Office 365",
+        "url": "https://www.office.com",
+        "category": "WORK",
+        "description": "微软办公套件",
+        "popularity": 86
+    },
+    {
+        "id": "google-drive",
+        "title": "Google Drive",
+        "url": "https://drive.google.com",
+        "category": "WORK",
+        "description": "云存储和办公套件",
+        "popularity": 89
+    },
+    {
+        "id": "amazon",
+        "title": "Amazon",
+        "url": "https://www.amazon.com",
+        "category": "SHOPPING",
+        "description": "全球最大的电商平台",
+        "popularity": 98
+    },
+    {
+        "id": "taobao",
+        "title": "淘宝",
+        "url": "https://www.taobao.com",
+        "category": "SHOPPING",
+        "description": "中国最大的电商平台",
+        "popularity": 95
+    },
+    {
+        "id": "jd",
+        "title": "京东",
+        "url": "https://www.jd.com",
+        "category": "SHOPPING",
+        "description": "中国电商平台",
+        "popularity": 90
+    },
+    {
+        "id": "ebay",
+        "title": "eBay",
+        "url": "https://www.ebay.com",
+        "category": "SHOPPING",
+        "description": "在线拍卖和购物网站",
+        "popularity": 85
+    },
+    {
+        "id": "etsy",
+        "title": "Etsy",
+        "url": "https://www.etsy.com",
+        "category": "SHOPPING",
+        "description": "手工艺品电商平台",
+        "popularity": 78
+    },
+    {
+        "id": "aliexpress",
+        "title": "AliExpress",  
+        "url": "https://www.aliexpress.com",
+        "category": "SHOPPING",
+        "description": "全球零售市场",
+        "popularity": 82
+    },
+    {
+        "id": "tmall",
+        "title": "天猫",
+        "url": "https://www.tmall.com",
+        "category": "SHOPPING",
+        "description": "中国B2C电商平台",
+        "popularity": 88
+    },
+    {
+        "id": "pinduoduo",
+        "title": "拼多多",
+        "url": "https://www.pinduoduo.com",
+        "category": "SHOPPING",
+        "description": "中国社交电商平台",
+        "popularity": 84
+    },
+    {
+        "id": "coursera",
+        "title": "Coursera",
+        "url": "https://www.coursera.org",
+        "category": "EDUCATION",
+        "description": "在线课程平台",
+        "popularity": 85
+    },
+    {
+        "id": "khan-academy",
+        "title": "Khan Academy",
+        "url": "https://www.khanacademy.org",
+        "category": "EDUCATION",
+        "description": "免费在线教育平台",
+        "popularity": 82
+    },
+    {
+        "id": "duolingo",
+        "title": "Duolingo",
+        "url": "https://www.duolingo.com",
+        "category": "EDUCATION",
+        "description": "语言学习平台",
+        "popularity": 88
+    },
+    {
+        "id": "edx",
+        "title": "edX",
+        "url": "https://www.edx.org",
+        "category": "EDUCATION",
+        "description": "在线课程平台",
+        "popularity": 80
+    },
+    {
+        "id": "udemy",
+        "title": "Udemy",
+        "url": "https://www.udemy.com",
+        "category": "EDUCATION",
+        "description": "在线课程市场",
+        "popularity": 83
+    },
+    {
+        "id": "skillshare",
+        "title": "Skillshare",
+        "url": "https://www.skillshare.com",
+        "category": "EDUCATION",
+        "description": "在线学习社区",
+        "popularity": 75
+    },
+    {
+        "id": "codecademy",
+        "title": "Codecademy",
+        "url": "https://www.codecademy.com",
+        "category": "EDUCATION",
+        "description": "编程学习平台",
+        "popularity": 81
+    },
+    {
+        "id": "pluralsight",
+        "title": "Pluralsight",
+        "url": "https://www.pluralsight.com",
+        "category": "EDUCATION",
+        "description": "技术学习平台",
+        "popularity": 76
+    },
+    {
+        "id": "techcrunch",
+        "title": "TechCrunch",
+        "url": "https://techcrunch.com",
+        "category": "TECH",
+        "description": "科技新闻网站",
+        "popularity": 84
+    },
+    {
+        "id": "verge",
+        "title": "The Verge",
+        "url": "https://www.theverge.com",
+        "category": "TECH",
+        "description": "科技媒体网站",
+        "popularity": 82
+    },
+    {
+        "id": "arstechnica",
+        "title": "Ars Technica",
+        "url": "https://arstechnica.com",
+        "category": "TECH",
+        "description": "科技新闻和评论",
+        "popularity": 78
+    },
+    {
+        "id": "wired",
+        "title": "Wired",
+        "url": "https://www.wired.com",
+        "category": "TECH",
+        "description": "科技文化杂志",
+        "popularity": 80
+    },
+    {
+        "id": "producthunt",
+        "title": "Product Hunt",
+        "url": "https://www.producthunt.com",
+        "category": "TECH",
+        "description": "新产品发现平台",
+        "popularity": 85
+    },
+    {
+        "id": "hackerone",
+        "title": "HackerOne",
+        "url": "https://www.hackerone.com",
+        "category": "TECH",
+        "description": "漏洞赏金平台",
+        "popularity": 72
+    },
+    {
+        "id": "gizmodo",
+        "title": "Gizmodo",
+        "url": "https://gizmodo.com",
+        "category": "TECH",
+        "description": "科技新闻网站",
+        "popularity": 76
+    },
+    {
+        "id": "engadget",
+        "title": "Engadget",
+        "url": "https://www.engadget.com",
+        "category": "TECH",
+        "description": "科技新闻和评测",
+        "popularity": 77
+    },
+    {
+        "id": "pinterest",
+        "title": "Pinterest",
+        "url": "https://www.pinterest.com",
+        "category": "LIFESTYLE",
+        "description": "图片分享和发现",
+        "popularity": 86
+    },
+    {
+        "id": "tripadvisor",
+        "title": "TripAdvisor",
+        "url": "https://www.tripadvisor.com",
+        "category": "LIFESTYLE",
+        "description": "旅游评论网站",
+        "popularity": 83
+    },
+    {
+        "id": "yelp",
+        "title": "Yelp",
+        "url": "https://www.yelp.com",
+        "category": "LIFESTYLE",
+        "description": "本地商家评论",
+        "popularity": 79
+    },
+    {
+        "id": "uber",
+        "title": "Uber",
+        "url": "https://www.uber.com",
+        "category": "LIFESTYLE",
+        "description": "网约车服务",
+        "popularity": 87
+    },
+    {
+        "id": "airbnb",
+        "title": "Airbnb",
+        "url": "https://www.airbnb.com",
+        "category": "LIFESTYLE",
+        "description": "短租住宿平台",
+        "popularity": 84
+    },
+    {
+        "id": "opentable",
+        "title": "OpenTable",
+        "url": "https://www.opentable.com",
+        "category": "LIFESTYLE",
+        "description": "餐厅预订平台",
+        "popularity": 73
+    },
+    {
+        "id": "zillow",
+        "title": "Zillow",
+        "url": "https://www.zillow.com",
+        "category": "LIFESTYLE",
+        "description": "房地产信息平台",
+        "popularity": 76
+    },
+    {
+        "id": "booking",
+        "title": "Booking.com",
+        "url": "https://www.booking.com",
+        "category": "LIFESTYLE",
+        "description": "酒店预订平台",
+        "popularity": 85    
+    }
+]

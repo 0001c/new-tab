@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, Command, ArrowRight, X } from 'lucide-react';
-import { SearchEngine, InteractionStyle } from '../types';
+import { InteractionStyle } from '../types';
 import { SEARCH_ENGINES } from '../constants';
 
 interface SearchBarProps {

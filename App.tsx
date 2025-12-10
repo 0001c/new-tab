@@ -122,7 +122,7 @@ const App: React.FC = () => {
 
       {/* Settings Panel - Only renders when open */}
       {isSettingsOpen && (
-        <div className={`fixed inset-y-0 right-0 w-full md:w-96 bg-black/50 backdrop-blur-sm z-50 transform transition-transform duration-300 translate-x-0`}>
+        <div className={`fixed inset-y-0 right-0 w-full md:w-96 backdrop-blur-sm z-50 transform transition-transform duration-300 translate-x-0`}>
           <SettingsPanel 
             onClose={() => setIsSettingsOpen(false)} 
             settings={settings}

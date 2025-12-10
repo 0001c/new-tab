@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Search, Command, ArrowRight, X, Clock } from 'lucide-react';
 import { InteractionStyle } from '../types';
 import { SEARCH_ENGINES } from '../constants';
+import { getFavicon } from '../utils';
 
 interface SearchBarProps {
   style: InteractionStyle;
@@ -205,6 +206,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const textColor = style === InteractionStyle.MINIMAL ? 'text-gray-900' : 'text-white';
   const placeholderColor = style === InteractionStyle.MINIMAL ? 'placeholder-gray-400' : 'placeholder-white/50';
 
+
   return (
     <>
       <div className="relative w-full max-w-2xl mx-auto z-40 transition-all duration-300">
@@ -221,11 +223,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
               className={`p-2 rounded-lg opacity-80 hover:opacity-100 hover:bg-white/10 transition-all ${textColor}`}
               title="Change Search Engine"
             >
-              {/* Simplified Icons */}
-              {activeEngine.id === 'google' && <span className="font-bold text-lg">G</span>}
-              {activeEngine.id === 'bing' && <span className="font-bold text-lg">b</span>}
-              {activeEngine.id === 'duckduckgo' && <span className="font-bold text-lg">D</span>}
-              {activeEngine.id === 'youtube' && <span className="font-bold text-lg">Y</span>}
+              {/* Favicon */}
+              <img 
+                src={getFavicon(activeEngine.urlTemplate)} 
+                alt={activeEngine.name} 
+                className="w-5 h-5 object-contain" 
+              />
             </button>
           </div>
 
@@ -392,13 +395,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
                     backgroundColor: engineId === e.id ? `${themeColor}1A` : undefined // 1A is 10% opacity hex
                   }}
                 >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold ${
-                    style === InteractionStyle.MINIMAL ? 'bg-gray-100 text-gray-800' : 'bg-white/10 text-white'
-                  }`}>
-                    {e.id === 'google' && 'G'}
-                    {e.id === 'bing' && 'b'}
-                    {e.id === 'duckduckgo' && 'D'}
-                    {e.id === 'youtube' && 'Y'}
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden ${style === InteractionStyle.MINIMAL ? 'bg-gray-100' : 'bg-white/10'}`}>
+                    <img 
+                      src={getFavicon(e.urlTemplate)} 
+                      alt={e.name} 
+                      className="w-6 h-6 object-contain" 
+                    />
                   </div>
                   <div className="flex flex-col items-start">
                     <span className="font-medium text-lg">{e.name}</span>

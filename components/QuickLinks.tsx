@@ -3,6 +3,7 @@ import { Plus, X, Globe, Trash2 } from 'lucide-react';
 import { Shortcut, InteractionStyle, PresetShortcut } from '../types';
 import presetShortcuts from '../data/presetshortcut.json';
 import gsap from 'gsap';
+import { getFavicon } from '../utils';
 
 interface QuickLinksProps {
   shortcuts: Shortcut[];
@@ -53,14 +54,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
     }
   }, [searchTerm, selectedCategory, isAnimating]);
 
-  const getFavicon = (url: string) => {
-    try {
-      const domain = new URL(url).hostname;
-      return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-    } catch {
-      return '';
-    }
-  };
+
 
   const handleAddPresetShortcut = (preset: PresetShortcut) => {
     // 检查是否已经存在相同的网站
@@ -408,9 +402,7 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ shortcuts, setShortcuts, style,
                         <span className={`text-xs px-2 py-1 text-white rounded-lg hover:opacity-90 dark:bg-blue-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${getContainerStyle()}`} style={{ backgroundColor: themeColor }}>
                           {preset.category}
                         </span>
-                        <span className={`text-xs ${style === InteractionStyle.MINIMAL ? 'text-gray-500' : 'text-gray-400'}`}>
-                          Popularity: {preset.popularity}
-                        </span>
+                        
                       </div>
                     </div>
                   );

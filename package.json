@@ -12,8 +12,7 @@
     "gsap": "^3.14.1",
     "lucide-react": "^0.556.0",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "next": "16.0.7"
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
